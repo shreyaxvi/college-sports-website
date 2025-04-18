@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registration</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <script>
+    function validateForm() {
+    
+      var phone = document.getElementById('phone').value;
+      var phonePattern = /^[0-9]{10}$/;
+      if (!phonePattern.test(phone)) {
+        alert("Please enter a valid 10-digit phone number.");
+        return false;
+      }
+
+      var email = document.getElementById('email').value;
+      var emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+      if (!emailPattern.test(email)) {
+        alert("Please enter a valid Gmail address.");
+        return false;
+      }
+
+      var name = document.getElementById('name').value;
+      var namePattern = /^[A-Za-z\s]+$/;
+      if (!namePattern.test(name)) {
+        alert("Please enter a valid name (only letters and spaces).");
+        return false;
+      }
+
+      var roll = document.getElementById('roll').value;
+      var rollPattern = /^[A-Za-z0-9]{8}$/;
+      if (!rollPattern.test(roll)) {
+        alert("Please enter a valid roll number (8 characters, alphanumeric).");
+        return false;
+      }
+
+      var events = document.querySelectorAll('input[name="events"]:checked');
+      if (events.length === 0) {
+        alert("Please select at least one event.");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <div class="page-wrapper">
+    <header>
+      <div class="container"> 
+        <h1 class="animate__animated animate__fadeIn">JSPM RSCOE College Sports</h1>
+        <p class="animate__animated animate__slideInLeft">Unleash Your Inner Champion!</p>
+      </div>
+    </header>
+
+    <nav>
+      <div class="container">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="register.html" class="active">Register</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="content-container">
+      <div class="container">
+        <div class="registration-form">
+          <h2>Registration Form</h2>
+          <p>Please fill out this form to register for upcoming sports events.</p>
+
+          <form id="registration-form" onsubmit="return validateForm()">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="roll">Roll No:</label>
+            <input type="text" id="roll" name="roll" required>
+
+            <label for="dept">Department:</label>
+            <select id="dept" name="dept" required>
+              <option value="">Select Department</option>
+              <option value="Computer">Computer</option>
+              <option value="CSBS">CSBS</option>
+              <option value="IT">IT</option>
+              <option value="ENTC">ENTC</option>
+              <option value="Automation & Robotics">Automation & Robotics</option>
+              <option value="Mechanical">Mechanical</option>
+              <option value="Civil">Civil</option>
+            </select>
+
+            <label for="phone">Contact Number:</label>
+            <input type="text" id="phone" name="phone" required>
+
+            <label for="email">Gmail Address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <fieldset>
+              <legend>Select Events:</legend>
+              <label><input type="checkbox" name="events" value="Chess"> Chess</label><br>
+              <label><input type="checkbox" name="events" value="Athletics"> Athletics</label><br>
+              <label><input type="checkbox" name="events" value="Carrom"> Carrom</label><br>
+              <label><input type="checkbox" name="events" value="Table Tennis"> Table Tennis</label><br>
+              <label><input type="checkbox" name="events" value="Volleyball"> Volleyball</label><br>
+              <label><input type="checkbox" name="events" value="Badminton"> Badminton</label><br>
+              <label><input type="checkbox" name="events" value="Football"> Football</label><br>
+              <label><input type="checkbox" name="events" value="Basketball"> Basketball</label><br>
+            </fieldset>
+
+            <input type="submit" value="Submit">
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 JSPM RSCOE College Sports. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
